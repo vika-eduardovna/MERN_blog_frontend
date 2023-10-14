@@ -5,20 +5,20 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 
-import styles from './Login.module.scss';
+import s from './Login.module.scss';
 
 export const Registration = () => {
   return (
-    <Paper classes={{ root: styles.root }}>
-      <Typography classes={{ root: styles.title }} variant="h5">
+    <Paper classes={{ root: s.root }}>
+      <Typography classes={{ root: s.title }} variant="h5">
         Sign in
       </Typography>
-      <div className={styles.avatar}>
+      <div className={s.avatar}>
         <Avatar sx={{ width: 100, height: 100 }} />
       </div>
-      <TextField className={styles.field} label="Full name" fullWidth />
-      <TextField className={styles.field} label="E-Mail" fullWidth />
-      <TextField className={styles.field} label="Password" fullWidth />
+      <TextField className={s.field} label="Full name" fullWidth />
+      <TextField className={s.field} label="E-Mail" fullWidth />
+      <TextField className={s.field} label="Password" fullWidth />
       <Button size="large" variant="contained" fullWidth>
         Sign in
       </Button>

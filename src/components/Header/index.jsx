@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
-import styles from './Header.module.scss';
+import s from './Header.module.scss';
 import Container from '@mui/material/Container';
 
 export const Header = () => {
@@ -10,30 +11,30 @@ export const Header = () => {
   const onClickLogout = () => { };
 
   return (
-    <div className={styles.root}>
+    <div className={s.root}>
       <Container maxWidth="lg">
-        <div className={styles.inner}>
-          <a className={styles.logo} href="/">
+        <div className={s.inner}>
+          <Link className={s.logo} to="/">
             <div>MERN BLOG</div>
-          </a>
-          <div className={styles.buttons}>
+          </Link>
+          <div className={s.buttons}>
             {isAuth ? (
               <>
-                <a href="/posts/create">
+                <Link to="/posts/create">
                   <Button variant="contained">Create an article</Button>
-                </a>
+                </Link>
                 <Button onClick={onClickLogout} variant="contained" color="error">
                   Log out
                 </Button>
               </>
             ) : (
               <>
-                <a href="/login">
+                <Link to="/login">
                   <Button variant="outlined">Log in</Button>
-                </a>
-                <a href="/register">
+                </Link>
+                <Link to="/register">
                   <Button variant="contained">Sign in</Button>
-                </a>
+                </Link>
               </>
             )}
           </div>

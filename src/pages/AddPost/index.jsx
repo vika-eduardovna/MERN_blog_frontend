@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import SimpleMDE from 'react-simplemde-editor';
 
 import 'easymde/dist/easymde.min.css';
-import styles from './AddPost.module.scss';
+import s from './AddPost.module.scss';
 
 export const AddPost = () => {
   const imageUrl = '';
@@ -46,25 +47,25 @@ export const AddPost = () => {
         </Button>
       )}
       {imageUrl && (
-        <img className={styles.image} src={`http://localhost:4444${imageUrl}`} alt="Uploaded" />
+        <img className={s.image} src={`http://localhost:4444${imageUrl}`} alt="Uploaded" />
       )}
       <br />
       <br />
       <TextField
-        classes={{ root: styles.title }}
+        classes={{ root: s.title }}
         variant="standard"
         placeholder="Title of an article..."
         fullWidth
       />
-      <TextField classes={{ root: styles.tags }} variant="standard" placeholder="Tags" fullWidth />
-      <SimpleMDE className={styles.editor} value={value} onChange={onChange} options={options} />
-      <div className={styles.buttons}>
+      <TextField classes={{ root: s.tags }} variant="standard" placeholder="Tags" fullWidth />
+      <SimpleMDE className={s.editor} value={value} onChange={onChange} options={options} />
+      <div className={s.buttons}>
         <Button size="large" variant="contained">
           Publish
         </Button>
-        <a href="/">
+        <Link to="/">
           <Button size="large">Cancel</Button>
-        </a>
+        </Link>
       </div>
     </Paper>
   );

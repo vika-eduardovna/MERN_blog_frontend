@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./AddComment.module.scss";
+import s from "./AddComment.module.scss";
 
 import TextField from "@mui/material/TextField";
 import Avatar from "@mui/material/Avatar";
@@ -9,12 +9,12 @@ import Button from "@mui/material/Button";
 export const Index = () => {
   return (
     <>
-      <div className={styles.root}>
+      <div className={s.root}>
         <Avatar
-          classes={{ root: styles.avatar }}
+          classes={{ root: s.avatar }}
           src="https://mui.com/static/images/avatar/5.jpg"
         />
-        <div className={styles.form}>
+        <div className={s.form}>
           <TextField
             label="Write a comment"
             variant="outlined"

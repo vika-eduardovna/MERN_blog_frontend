@@ -4,22 +4,22 @@ import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 
-import styles from "./Login.module.scss";
+import s from "./Login.module.scss";
 
 export const Login = () => {
   return (
-    <Paper classes={{ root: styles.root }}>
-      <Typography classes={{ root: styles.title }} variant="h5">
+    <Paper classes={{ root: s.root }}>
+      <Typography classes={{ root: s.title }} variant="h5">
         Log in
       </Typography>
       <TextField
-        className={styles.field}
+        className={s.field}
         label="E-Mail"
         error
         helperText="Email is uncorrect"
         fullWidth
       />
-      <TextField className={styles.field} label="Password" fullWidth />
+      <TextField className={s.field} label="Password" fullWidth />
       <Button size="large" variant="contained" fullWidth>
         Log in
       </Button>
