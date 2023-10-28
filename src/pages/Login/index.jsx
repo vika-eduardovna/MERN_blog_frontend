@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from "react-router-dom";
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
@@ -29,12 +29,11 @@ export const Login = () => {
 
   const onSubmit = async (values) => {
     const data = await dispatch(fetchAuth(values));
-    console.log(data);
-    if (data.payload) {
-      window.localStorage.setItem('token', data.payload)
-    } else {
-      alert('Authorization failed')
+    if (!data.payload) return alert('Authorization failed');
+    if ('token' in data.payload) {
+      window.localStorage.setItem('token', data.payload.token)
     }
+
   };
 
   useEffect(() => {
