@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
-import { fetchAuth, selectIsAuth } from "../../redux/slices/auth";
+import { fetchAuth, selectIsAuth, fetchRegister } from "../../redux/slices/auth";
 
 import s from './Login.module.scss';
 
@@ -17,7 +17,6 @@ export const Registration = () => {
   const {
     register,
     handleSubmit,
-    setError,
     formState:
     { errors, isValid }
   } = useForm({
@@ -30,17 +29,12 @@ export const Registration = () => {
   });
 
   const onSubmit = async (values) => {
-    const data = await dispatch(fetchAuth(values));
-    if (!data.payload) return alert('Authorization failed');
+    const data = await dispatch(fetchRegister(values));
+    if (!data.payload) return alert('Registration failed');
     if ('token' in data.payload) {
       window.localStorage.setItem('token', data.payload.token)
     }
-
   };
-
-  useEffect(() => {
-
-  }, [])
 
   if (isAuth) {
     return <Navigate to="/" />;
@@ -53,12 +47,39 @@ export const Registration = () => {
       <div className={s.avatar}>
         <Avatar sx={{ width: 100, height: 100 }} />
       </div>
-      <TextField className={s.field} label="Full name" fullWidth />
-      <TextField className={s.field} label="E-Mail" fullWidth />
-      <TextField className={s.field} label="Password" fullWidth />
-      <Button size="large" variant="contained" fullWidth>
-        Sign in
-      </Button>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <TextField
+          error={Boolean(errors.fullName?.message)}
+          helperText={errors.fullName?.message}
+          type="text"
+          {...register('fullName', { required: 'Enter your name' })}
+          className={s.field}
+          label="Full name"
+          fullWidth />
+        <TextField
+          error={Boolean(errors.email?.message)}
+          helperText={errors.email?.message}
+          type="email"
+          {...register('email', { required: 'Enter your email' })}
+          className={s.field} label="E-Mail"
+          fullWidth />
+        <TextField
+          error={Boolean(errors.password?.message)}
+          helperText={errors.password?.message}
+          type="password"
+          {...register('password', { required: 'Enter your password' })}
+          className={s.field}
+          label="Password"
+          fullWidth />
+        <Button
+          disabled={!isValid}
+          type="submit"
+          size="large"
+          variant="contained"
+          fullWidth>
+          Sign in
+        </Button>
+      </form>
     </Paper>
   );
 };

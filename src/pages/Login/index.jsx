@@ -16,7 +16,6 @@ export const Login = () => {
   const {
     register,
     handleSubmit,
-    setError,
     formState:
     { errors, isValid }
   } = useForm({
@@ -67,6 +66,7 @@ export const Login = () => {
           {...register('password', { required: 'Enter your password' })}
           fullWidth />
         <Button
+          disabled={!isValid}
           type="submit"
           size="large"
           variant="contained"
